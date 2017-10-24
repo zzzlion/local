@@ -1,0 +1,2 @@
+﻿#查找有序的数组
+int binarySearch(int A[], int n, int )
