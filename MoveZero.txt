@@ -1,0 +1,31 @@
+﻿class Solution {
+    //用两个指针（索引）减少空间复杂度，原址操作，直接往前移动非零元素。玩转算法3-3
+public:
+    void moveZeroes(vector<int>& nums) {
+        int k =0; //nums中[0……k)的元素非0
+        for(int i =0;i<nums.size();i++){
+            if(nums[i]){
+                 nums[k]=nums[i];
+                 k++;
+            }
+                
+        }
+        for(int i = k;i<nums.size();i++)
+            nums[i]=0;
+        
+    }
+};
+
+//解2,用两个指针（索引）减少空间复杂度，原址操作，直接交换零元素和非零元素。
+
+
+    void moveZeroes(vector<int>& nums) {
+        int k =0; 
+        for(int i =0;i<nums.size();i++){
+            if(nums[i]){
+                 swap(nums[k],nums[i]);
+                 k++;
+            }
+                
+        }
+    }
