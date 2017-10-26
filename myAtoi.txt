@@ -1,0 +1,92 @@
+﻿//http://www.cnblogs.com/lcchuguo/p/5405878.html
+//http://blog.csdn.net/lanzhihui_10086/article/details/39995869
+int atoi_my(const char *str)
+{
+	unsigned int ans = 0; //必须是无符号的类型，如果只是Int则永远不可能超过INT_MAX或者小于INT_MIN
+	bool isNeg = false; //默认是正数
+	while (*str == ' ')	//从第一个非空格开始
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+		isNeg = true;
+		str++;
+	}
+	while (*str >= '0'&&*str <= '9')
+	{
+		ans = ans * 10 + *str - '0';
+		str++;
+	}
+	//溢出判断
+	if (ans > INT_MAX && !isNeg) return INT_MAX;
+	else if (isNeg && ans*(-1) < INT_MIN) return INT_MIN;
+	return isNeg ? ans*(-1) : ans;
+
+
+}
+
+int myAtoi(string str)
+{
+	unsigned int ans = 0; //必须是无符号的类型，如果只是Int则永远不可能超过INT_MAX或者小于INT_MIN
+	bool isNeg = false; //默认是正数
+	int i = 0;
+	while (str[i] == ' ')	//从第一个非空格开始
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			isNeg = true;
+		i++;
+	}
+	while (str[i] >= '0'&&str[i] <= '9')
+	{
+		ans = ans * 10 + str[i] - '0';
+		i++;
+	}
+	//溢出判断
+	if (ans > INT_MAX && !isNeg) return INT_MAX;
+	else if (isNeg && ans*(-1) < INT_MIN) return INT_MIN;
+	return isNeg ? ans*(-1) : ans;
+
+
+}
+
+//测试用例
+
+	char *s1 = "333640";
+	char *s2 = "-12345";
+	char *s3 = "123.3113";
+	char *s4 = "-8362865623872387698";
+	char *s5 = "+246653278";
+	string sss = "-8362865623872387698";
+
+	int sum1 = atoi(s1);
+	int sum_1 = atoi_my(s1);
+
+	int sum2 = atoi(s2);
+	int sum_2 = atoi_my(s2);
+
+	int sum3 = atoi(s3);
+	int sum_3 = atoi_my(s3);
+
+	int sum4 = atoi(s4);
+	int sum_4 = atoi_my(s4);
+
+	int sum5 = atoi(s5);
+	int sum_5 = atoi_my(s5);
+
+	cout << "atoi:  :" << sum1 << endl;
+	cout << "atoi_my:" << sum_1 << endl;
+
+	cout << "atoi:  :" << sum2 << endl;
+	cout << "atoi_my:" << sum_2 << endl;
+
+	cout << "atoi:  :" << sum3 << endl;
+	cout << "atoi_my:" << sum_3 << endl;
+
+	cout << "atoi:  :" << sum4 << endl;
+	cout << "atoi_my:" << sum_4 << endl;
+
+	cout << "atoi:  :" << sum5 << endl;
+	cout << "atoi_my:" << sum_5 << endl;
+	cout << "MyAtoi:" << myAtoi(sss) << endl;
