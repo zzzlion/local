@@ -1,0 +1,22 @@
+﻿//用两个索引来原地操作。因为是已排序的数组，不用考虑不相邻的元素有重复。
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int len = nums.size();
+        if(len<2) return len;
+        int k = 1; //[0...k)都是没有重复的
+        for(int i =1;i<len;i++)
+        {
+            if(nums[i]==nums[k-1])
+                continue;
+            else
+            {
+                nums[k]=nums[i];
+                k++;
+            }
+                
+        }
+        return k;
+    }
+};
